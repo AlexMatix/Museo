@@ -16,9 +16,9 @@ class CreateCommunitiesTable extends Migration
     {
         Schema::create('communities', function (Blueprint $table) {
             $table->increments('idComunidad');
+            $table->string('name',45);
             $table->string('director',45);
-            $table->string('string',45);
-            $table->string('string',45);
+            $table->string('address',45);
             $table->tinyInteger('deleted')->default(Community::ACTIVE);
             //$table->timestamps();
         });

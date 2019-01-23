@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use App\Collection;
 
 class CreateCollectionsTable extends Migration
 {
@@ -14,8 +15,15 @@ class CreateCollectionsTable extends Migration
     public function up()
     {
         Schema::create('collections', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+            $table->increments('idCollection');
+            $table->string('name', 45);
+            $table->text('description');
+            $table->integer('idSet');
+            $table->tinyInteger('deleted')->default(Collection::ACTIVE);
+
+            //Definimos las llaves foraneas.
+            $table->foreign('idSet')->references('idSet')->on('sets');
+
         });
     }
 

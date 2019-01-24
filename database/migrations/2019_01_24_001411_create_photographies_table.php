@@ -21,10 +21,9 @@ class CreatePhotographiesTable extends Migration
             $table->string('photographer',45);
             $table->text('description');
             $table->string('path',45);
-            $table->tinyInteger('deleted')->default(Photography::ACTIVE);
             $table->integer('idObject')->unsigned();
+            $table->tinyInteger('deleted')->default(Photography::ACTIVE);
 
-            $table->tinyInteger('deleted')->default(InventoryCatalog::ACTIVE);
 
             //Definimos las llaves foraneas.
             $table->foreign('idObject')->references('idobject')->on('objects');

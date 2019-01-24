@@ -29,9 +29,9 @@ class CreateObjectInfoFieldsTable extends Migration
             $table->string('param1');
             $table->string('param2');
             $table->string('param3');
-            $table->string('objectcategoryid')->unsigned();
+            $table->integer('objectcategoryid')->unsigned();
 
-            $table->tinyInteger('deleted')->default(1);
+            $table->tinyInteger('deleted')->default(ObjectInfoField::ACTIVE);
 
 
             //Definimos llaves foraneas

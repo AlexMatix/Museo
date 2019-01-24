@@ -16,7 +16,7 @@ class CreateExhibitionsTable extends Migration
     {
         Schema::create('exhibitions', function (Blueprint $table) {
             $table->increments('idExhibition');
-            $table->integer('idOrganization');
+            $table->integer('idOrganization')->unsigned();
             $table->string('name',45);
             $table->dateTime('star_date');
             $table->dateTime('end_date');

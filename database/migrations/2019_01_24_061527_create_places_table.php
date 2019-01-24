@@ -15,7 +15,7 @@ class CreatePlacesTable extends Migration
     {
         Schema::create('places', function (Blueprint $table) {
             $table->increments('idPlace');
-            $table->integer('idExhibition');
+            $table->integer('idExhibition')->unsigned();
 
             $table->tinyInteger('deleted')->default(Movement::ACTIVE);
 

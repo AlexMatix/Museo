@@ -15,12 +15,12 @@ class CreateAppraisalHistoriesTable extends Migration
     {
         Schema::create('appraisal_histories', function (Blueprint $table) {
             $table->increments('idAppraisalHistories');
-            $table->integer('idobject');
+            $table->integer('idobject')->unsigned();
             $table->decimal('previous_appraisal',13,4);
             $table->decimal("new_appraisal",13,4);
             $table->dateTime('date');
-            $table->integer('updated_by')->nullable();
-            $table->integer('authorized_by')->nullable();
+            $table->integer('updated_by')->unsigned()->nullable();
+            $table->integer('authorized_by')->unsigned()->nullable();
 
             $table->tinyInteger('deleted')->default(InventoryCatalog::ACTIVE);
 

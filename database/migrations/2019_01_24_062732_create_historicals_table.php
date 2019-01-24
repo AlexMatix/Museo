@@ -19,8 +19,8 @@ class CreateHistoricalsTable extends Migration
             $table->dateTime('date');
             $table->string('description',45);
             $table->string('lastip',45);
-            $table->integer('idUser');
-            $table->integer('name');
+            $table->integer('idUser')->unsigned();
+            $table->integer('name')->unsigned();
             $table->tinyInteger('deleted')->default(Historical::ACTIVE);
 
             //Definimos llaves foraneas

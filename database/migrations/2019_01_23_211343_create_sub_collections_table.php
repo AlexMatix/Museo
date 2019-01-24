@@ -18,7 +18,7 @@ class CreateSubCollectionsTable extends Migration
 
             $table->increments('idSubCollection');
             $table->string('title', 45);
-            $table->integer('idCollection');
+            $table->integer('idCollection')->unsigned();
             $table->tinyInteger('deleted')->default(SubCollection::ACTIVE);
 
             //Definimos las llaves foraneas.

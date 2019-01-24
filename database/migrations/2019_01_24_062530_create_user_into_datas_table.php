@@ -15,8 +15,8 @@ class CreateUserIntoDatasTable extends Migration
     {
         Schema::create('user_into_datas', function (Blueprint $table) {
             $table->increments('idUserIntoData');
-            $table->integer('idUser');
-            $table->integer('idUserInfoField');
+            $table->integer('idUser')->unsigned();
+            $table->integer('idUserInfoField')->unsigned();
             $table->string('data',45);
             $table->string('dataFormat',45);
 

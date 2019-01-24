@@ -16,7 +16,7 @@ class CreateBibliographiesTable extends Migration
     {
         Schema::create('bibliographies', function (Blueprint $table) {
             $table->increments('idBibliographies');
-            $table->integer('idResearch');
+            $table->integer('idResearch')->unsigned();
             $table->integer('number');
             $table->string('author',45);
             $table->string('article',45);

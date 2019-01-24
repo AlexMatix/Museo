@@ -22,7 +22,7 @@ class CreatePhotographiesTable extends Migration
             $table->text('description');
             $table->string('path',45);
             $table->tinyInteger('deleted')->default(Photography::ACTIVE);
-            $table->integer('idObject');
+            $table->integer('idObject')->unsigned();
 
             $table->tinyInteger('deleted')->default(InventoryCatalog::ACTIVE);
 

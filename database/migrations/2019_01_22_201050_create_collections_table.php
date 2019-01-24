@@ -18,7 +18,7 @@ class CreateCollectionsTable extends Migration
             $table->increments('idCollection');
             $table->string('name', 45);
             $table->text('description');
-            $table->integer('idSet');
+            $table->integer('idSet')->unsigned();
             $table->tinyInteger('deleted')->default(Collection::ACTIVE);
 
             //Definimos las llaves foraneas.

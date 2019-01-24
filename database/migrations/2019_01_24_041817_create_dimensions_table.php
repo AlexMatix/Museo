@@ -24,8 +24,8 @@ class CreateDimensionsTable extends Migration
             $table->string('width',45);
             $table->string('depth',45);
             $table->string('diameter',45);
-            $table->integer('idMeasure');
-            $table->integer('idObject');
+            $table->integer('idMeasure')->unsigned();
+            $table->integer('idObject')->unsigned();
 
             $table->tinyInteger('deleted')->default(Bibliography::ACTIVE);
 

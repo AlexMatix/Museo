@@ -22,10 +22,10 @@ class CreateObjectsTable extends Migration
             $table->dateTime('created_at');
             $table->dateTime('update_at');
 
-            $table->integer('collection_idCollection');
-            $table->integer('subCollection_idSubCollection');
-            $table->integer('type');
-            $table->integer('location');
+            $table->integer('collection_idCollection')->unsigned();
+            $table->integer('subCollection_idSubCollection')->unsigned();
+            $table->integer('type')->unsigned();
+            $table->integer('location')->unsigned();
 
             $table->tinyInteger('deleted')->default(InventoryCatalog::ACTIVE);
 

@@ -15,8 +15,8 @@ class CreateRoleCapabilitiesTable extends Migration
     {
         Schema::create('role_capabilities', function (Blueprint $table) {
             $table->increments('idRoleCapabilities');
-            $table->integer('idRole');
-            $table->integer('name');
+            $table->integer('idRole')->unsigned();
+            $table->integer('name')->unsigned();
             $table->dateTime('timemodified');
 
             $table->foreign('idRole')->references('idRole')->on('roles');

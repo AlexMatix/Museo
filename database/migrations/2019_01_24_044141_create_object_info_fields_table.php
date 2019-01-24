@@ -29,12 +29,12 @@ class CreateObjectInfoFieldsTable extends Migration
             $table->string('param1');
             $table->string('param2');
             $table->string('param3');
-            $table->string('objectcategoryid');
+            $table->string('objectcategoryid')->unsigned();
 
             $table->tinyInteger('deleted')->default(ObjectInfoField::ACTIVE);
 
             //Definimos llaves foraneas
-            $table->foreign('idMeasure')->references('idInventoryCatalogs')->on('inventory_catalogs');
+            $table->foreign('objectcategoryid')->references('idObjectInfoCategories')->on('object_info_categories');
 
         });
     }

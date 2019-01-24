@@ -22,7 +22,7 @@ class CreateRestaurationsTable extends Migration
             $table->string('analysis',45);
             $table->string('annexes',45);
             $table->dateTime('date');
-            $table->integer('idObject');
+            $table->integer('idObject')->unsigned();
             $table->tinyInteger('deleted')->default(Restauration::ACTIVE);
 
             //Definimos las llaves foraneas.

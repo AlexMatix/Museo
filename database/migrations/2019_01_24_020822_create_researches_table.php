@@ -26,9 +26,9 @@ class CreateResearchesTable extends Migration
             $table->mediumText('formal_description',45);
             $table->mediumText('observations',45);
 
-            $table->integer('author');
-            $table->integer('origin');
-            $table->integer('period');
+            $table->integer('author')->unsigned();
+            $table->integer('origin')->unsigned();
+            $table->integer('period')->unsigned();
 
             $table->tinyInteger('deleted')->default(Research::ACTIVE);
 

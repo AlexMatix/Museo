@@ -15,6 +15,7 @@ class CreateInventoryCatalogsTable extends Migration
     public function up()
     {
         Schema::create('inventory_catalogs', function (Blueprint $table) {
+
             $table->increments('idInventoryCatalogs');
             $table->string('title', 45);
             $table->text('description');

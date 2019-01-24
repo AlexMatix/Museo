@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use App\Object;
 
 class CreateObjectsTable extends Migration
 {
@@ -27,7 +28,7 @@ class CreateObjectsTable extends Migration
             $table->integer('type')->unsigned();
             $table->integer('location')->unsigned();
 
-            $table->tinyInteger('deleted')->default(InventoryCatalog::ACTIVE);
+            $table->tinyInteger('deleted')->default(Object::ACTIVE);
 
             //Definimos las llaves foraneas.
             $table->foreign('collection_idCollection')->references('idCollection')->on('collections');

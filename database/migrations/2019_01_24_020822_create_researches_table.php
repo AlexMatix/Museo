@@ -30,6 +30,7 @@ class CreateResearchesTable extends Migration
             $table->integer('origin')->unsigned();
             $table->integer('period')->unsigned();
 
+
             $table->tinyInteger('deleted')->default(Research::ACTIVE);
 
             //Definimos las llaves foraneas.

@@ -19,11 +19,11 @@ class CreateInventoryCatalogsTable extends Migration
             $table->increments('idInventoryCatalogs');
             $table->string('title', 45);
             $table->text('description');
-            $table->integer('idInventoryCatalogs')->unsigned()->nullable();
+            $table->integer('idInventoryCatalogs_Catalogs')->unsigned()->nullable();
             $table->tinyInteger('deleted')->default(InventoryCatalog::ACTIVE);
 
             //Definimos las llaves foraneas.
-            $table->foreign('idInventoryCatalogs')->references('idInventoryCatalogs')->on('inventory_catalogs');
+            $table->foreign('idInventoryCatalogs_Catalogs')->references('idInventoryCatalogs')->on('inventory_catalogs');
         });
     }
 

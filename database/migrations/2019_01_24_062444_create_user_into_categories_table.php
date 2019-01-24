@@ -16,7 +16,7 @@ class CreateUserIntoCategoriesTable extends Migration
         Schema::create('user_into_categories', function (Blueprint $table) {
             $table->increments('idUserIntoCategories');
             $table->string('name',45);
-            $table->bigInteger('sortorder',10);
+            $table->bigInteger('sortorder');
         });
     }
 

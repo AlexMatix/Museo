@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use App\Bibliography;
 
 class CreateBibliographiesTable extends Migration
 {
@@ -27,7 +28,7 @@ class CreateBibliographiesTable extends Migration
             $table->dateTime('date');
             $table->string('pages',45);
 
-            $table->tinyInteger('deleted')->default(Restauration::ACTIVE);
+            $table->tinyInteger('deleted')->default(Bibliography::ACTIVE);
 
             //Definimos llaves foraneas
             $table->foreign('idResearch')->references('idResearche')->on('researches');

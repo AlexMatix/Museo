@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use App\Research;
 
 class CreateResearchesTable extends Migration
 {
@@ -29,12 +30,12 @@ class CreateResearchesTable extends Migration
             $table->integer('origin');
             $table->integer('period');
 
-            $table->tinyInteger('deleted')->default(Restauration::ACTIVE);
+            $table->tinyInteger('deleted')->default(Research::ACTIVE);
 
             //Definimos las llaves foraneas.
-            $table->foreign('author')->references('idobject')->on('objects');
-            $table->foreign('origin')->references('idobject')->on('objects');
-            $table->foreign('period')->references('idobject')->on('objects');
+            $table->foreign('author')->references('idInvestigationCatalog')->on('investigation_catalogs');
+            $table->foreign('origin')->references('idInvestigationCatalog')->on('investigation_catalogs');
+            $table->foreign('period')->references('idInvestigationCatalog')->on('investigation_catalogs');
 
         });
     }

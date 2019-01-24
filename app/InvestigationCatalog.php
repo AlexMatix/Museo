@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Bibliography extends Model
+class InvestigationCatalog extends Model
 {
     //
     CONST ACTIVE  = 1;

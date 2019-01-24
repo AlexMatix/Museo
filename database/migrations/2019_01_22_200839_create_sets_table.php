@@ -23,7 +23,7 @@ class CreateSetsTable extends Migration
             $table->tinyInteger('deleted')->default(Set::ACTIVE);
 
             //Definimos las llaves foraneas.
-            $table->foreign('idCommunity')->references('idComunidad')->on('communities');
+            $table->foreign('idCommunity')->references('idCommunities')->on('communities');
         });
     }
 

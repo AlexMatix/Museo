@@ -19,8 +19,8 @@ class CreateDimensionsTable extends Migration
             $table->increments('idDimension');
             $table->string('height_with_base',45);
             $table->string('width_with_base',45);
-            $table->string('width_with_base',45);
-            $table->string('width_with_base',45);
+            $table->string('depth_with_base',45);
+            $table->string('diameter_with_base',45);
             $table->float('height');
             $table->string('width',45);
             $table->string('depth',45);

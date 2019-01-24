@@ -17,8 +17,8 @@ class CreateCollectionsTable extends Migration
         Schema::create('collections', function (Blueprint $table) {
             $table->increments('idCollection');
             $table->string('name', 45);
-            $table->text('description');
             $table->integer('idSet')->unsigned();
+            $table->text('description');
             $table->tinyInteger('deleted')->default(Collection::ACTIVE);
 
             //Definimos las llaves foraneas.

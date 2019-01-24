@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use App\AppraisalHistory;
 
 class CreateAppraisalHistoriesTable extends Migration
 {
@@ -22,7 +23,7 @@ class CreateAppraisalHistoriesTable extends Migration
             $table->integer('updated_by')->unsigned()->nullable();
             $table->integer('authorized_by')->unsigned()->nullable();
 
-            $table->tinyInteger('deleted')->default(InventoryCatalog::ACTIVE);
+            $table->tinyInteger('deleted')->default(AppraisalHistory::ACTIVE);
 
             //definimos llavez foraneas.
 

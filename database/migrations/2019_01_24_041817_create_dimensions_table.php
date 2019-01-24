@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use App\Dimension;
 
 class CreateDimensionsTable extends Migration
 {
@@ -27,7 +28,7 @@ class CreateDimensionsTable extends Migration
             $table->integer('idMeasure')->unsigned();
             $table->integer('idObject')->unsigned();
 
-            $table->tinyInteger('deleted')->default(Bibliography::ACTIVE);
+            $table->tinyInteger('deleted')->default(Dimension::ACTIVE);
 
             //Definimos llaves foraneas
             $table->foreign('idMeasure')->references('idInventoryCatalogs')->on('inventory_catalogs');

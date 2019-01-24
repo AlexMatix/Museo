@@ -18,7 +18,7 @@ class CreateSetsTable extends Migration
         Schema::create('sets', function (Blueprint $table) {
             $table->increments('idSet');
             $table->string('title', 45);
-            $table->integer('idCommunity');
+            $table->integer('idCommunity')->unsigned();
             $table->text('description');
             $table->tinyInteger('deleted')->default(Set::ACTIVE);
 

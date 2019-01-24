@@ -3,9 +3,9 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use App\Photography;
+use App\Restauration;
 
-class CreatePhotographiesTable extends Migration
+class CreateRestaurationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,17 +14,16 @@ class CreatePhotographiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('photographies', function (Blueprint $table) {
+        Schema::create('restaurations', function (Blueprint $table) {
 
-            $table->increments('idPhotography');
+            $table->increments('idRestaurations');
+            $table->string('state_conservation',45);
+            $table->string('materials',45);
+            $table->string('analysis',45);
+            $table->string('annexes',45);
             $table->dateTime('date');
-            $table->string('photographer',45);
-            $table->text('description');
-            $table->string('path',45);
-            $table->tinyInteger('deleted')->default(Photography::ACTIVE);
             $table->integer('idObject');
-
-            $table->tinyInteger('deleted')->default(InventoryCatalog::ACTIVE);
+            $table->tinyInteger('deleted')->default(Restauration::ACTIVE);
 
             //Definimos las llaves foraneas.
             $table->foreign('idObject')->references('idobject')->on('objects');
@@ -38,6 +37,6 @@ class CreatePhotographiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('photographies');
+        Schema::dropIfExists('restaurations');
     }
 }

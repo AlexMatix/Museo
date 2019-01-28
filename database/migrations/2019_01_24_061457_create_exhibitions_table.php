@@ -27,7 +27,6 @@ class CreateExhibitionsTable extends Migration
             $table->string('email',45);
             $table->string('address',45);
             $table->tinyInteger('deleted')->default(Exhibition::ACTIVE);
-            $table->timestamps();
 
             //Definimos llaves foraneas
             $table->foreign('idOrganization')->references('idOrganization')->on('organizations');

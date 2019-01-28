@@ -21,8 +21,6 @@ class CreateInventoryCatalogsTable extends Migration
             $table->text('description');
             $table->integer('idInventoryCatalogsParent')->unsigned()->nullable();
             $table->tinyInteger('deleted')->default(InventoryCatalog::ACTIVE);
-            $table->timestamps();
-
             //Definimos las llaves foraneas.
 //            $table->foreign('idInventoryCatalogs_Catalogs')->references('idInventoryCatalogs')->on('inventory_catalogs');
         });

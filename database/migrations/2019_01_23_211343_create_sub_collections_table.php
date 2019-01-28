@@ -20,8 +20,6 @@ class CreateSubCollectionsTable extends Migration
             $table->string('title', 45);
             $table->integer('idCollection')->unsigned();
             $table->tinyInteger('deleted')->default(SubCollection::ACTIVE);
-            $table->timestamps();
-
             //Definimos las llaves foraneas.
             $table->foreign('idCollection')->references('idCollection')->on('collections');
         });

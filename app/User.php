@@ -20,10 +20,21 @@ class User extends Authenticatable
     CONST NOT_SUSPENDED = 0;
 
 
-//    protected $fillable = [
-//        'name', 'email', 'password',
-//    ];
-//
+    protected $fillable = [
+        'idUser',
+        'username',
+        'password',
+        'name',
+        'lastname',
+        'email',
+        'phone',
+        'lastaccess',
+        'lastip',
+        'deleted',
+        'suspended',
+    ];
+    public $timestamps = false;
+
 //    /**
 //     * The attributes that should be hidden for arrays.
 //     *
@@ -32,4 +43,5 @@ class User extends Authenticatable
 //    protected $hidden = [
 //        'password', 'remember_token',
 //    ];
+
 }

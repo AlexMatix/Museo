@@ -27,8 +27,6 @@ class CreateDimensionsTable extends Migration
             $table->string('diameter',45);
             $table->integer('idMeasure')->unsigned();
             $table->integer('idObject')->unsigned();
-            $table->timestamps();
-
             $table->tinyInteger('deleted')->default(Dimension::ACTIVE);
 
             //Definimos llaves foraneas

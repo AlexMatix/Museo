@@ -23,8 +23,6 @@ class CreateUsersTable extends Migration
             $table->string('phone');
             $table->string('lastaccess');
             $table->string('lastip');
-            $table->timestamps();
-
             $table->tinyInteger('deleted')->default(User::ACTIVE);
             $table->tinyInteger('suspended')->default(User::NOT_SUSPENDED);
 

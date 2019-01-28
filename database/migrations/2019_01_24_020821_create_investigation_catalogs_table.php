@@ -19,8 +19,6 @@ class CreateInvestigationCatalogsTable extends Migration
             $table->increments('idInvestigationCatalog');
             $table->string('title',45);
             $table->text('description',45);
-            $table->timestamps();
-
             $table->tinyInteger('deleted')->default(InvestigationCatalog::ACTIVE);
 
         });

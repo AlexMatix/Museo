@@ -23,13 +23,10 @@ class CreateObjectsTable extends Migration
             $table->decimal('appraisal',13,4);
             $table->mediumText('origin_description');
             $table->dateTime('date_of_entry');
-            $table->timestamps();
-
             $table->integer('collection_idCollection')->unsigned();
             $table->integer('subCollection_idSubCollection')->unsigned()->nullable();
             $table->integer('type')->unsigned();
             $table->integer('location')->unsigned();
-
             $table->tinyInteger('deleted')->default(Object::ACTIVE);
 
             //Definimos las llaves foraneas.

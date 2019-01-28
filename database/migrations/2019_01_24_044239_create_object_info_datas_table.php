@@ -20,9 +20,7 @@ class CreateObjectInfoDatasTable extends Migration
             $table->string('dataFormat',45);
             $table->integer('idObject')->unsigned();
             $table->integer('idInfoField')->unsigned();
-
             $table->tinyInteger('deleted')->default(ObjectInfoField::ACTIVE);
-
 
             $table->foreign('idObject')->references('idObject')->on('objects');
             $table->foreign('idInfoField')->references('idObjectInfoFields')->on('object_info_fields');

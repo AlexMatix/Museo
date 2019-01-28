@@ -15,12 +15,10 @@ class CreateReportsTable extends Migration
     public function up()
     {
         Schema::create('reports', function (Blueprint $table) {
-
             $table->increments('idReport');
             $table->string('name', 45);
             $table->string('path', 90);
             $table->text('description');
-            $table->timestamps();
             $table->tinyInteger('deleted')->default(Report::ACTIVE);
         });
     }

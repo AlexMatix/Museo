@@ -17,7 +17,6 @@ class CreatePlacesTable extends Migration
         Schema::create('places', function (Blueprint $table) {
             $table->increments('idPlace');
             $table->integer('idExhibition')->unsigned();
-
             $table->tinyInteger('deleted')->default(Places::ACTIVE);
 
             $table->foreign('idExhibition')->references('idExhibition')->on('exhibitions');

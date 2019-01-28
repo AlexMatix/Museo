@@ -20,7 +20,6 @@ class CreateCommunitiesTable extends Migration
             $table->string('director',45);
             $table->string('address',45);
             $table->tinyInteger('deleted')->default(Community::ACTIVE);
-            $table->timestamps();
         });
     }
 

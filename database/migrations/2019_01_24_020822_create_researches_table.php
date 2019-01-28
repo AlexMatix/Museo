@@ -25,14 +25,10 @@ class CreateResearchesTable extends Migration
             $table->string('short_description',45);
             $table->mediumText('formal_description',45);
             $table->mediumText('observations',45);
-
             $table->integer('author')->unsigned();
             $table->integer('origin')->unsigned();
             $table->integer('period')->unsigned();
             $table->integer('idObject')->unsigned();
-            $table->timestamps();
-
-
             $table->tinyInteger('deleted')->default(Research::ACTIVE);
 
             //Definimos las llaves foraneas.

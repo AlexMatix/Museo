@@ -20,7 +20,6 @@ class CreateCollectionsTable extends Migration
             $table->integer('idSet')->unsigned();
             $table->text('description');
             $table->tinyInteger('deleted')->default(Collection::ACTIVE);
-            $table->timestamps();
 
             //Definimos las llaves foraneas.
             $table->foreign('idSet')->references('idSet')->on('sets');

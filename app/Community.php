@@ -10,7 +10,16 @@ class Community extends Model
     CONST DELETED = 0;
     //
 
-    protected $fillable = [
-        'name', 'director', 'address'
-    ];
+
+    protected $fillable =
+        [
+            'idCommunities',
+            'name',
+            'director',
+            'address',
+            'deleted',
+        ];
+
+// protected $hidden=['id','Estado'];
+    public $timestamps = false;
 }

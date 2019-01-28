@@ -12,7 +12,16 @@ class Set extends Model
     CONST ACTIVE  = 1;
     CONST DELETED = 0;
 
-    protected $fillable = [
-        'idSet','title', 'idCommunity', 'description', 'deleted'
-    ];
+    protected $fillable =
+        [
+            'idSet',
+            'title',
+            'idCommunity',
+            'description',
+            'deleted',
+        ];
+
+    // protected $hidden=['id','Estado'];
+    public $timestamps = false;
+
 }

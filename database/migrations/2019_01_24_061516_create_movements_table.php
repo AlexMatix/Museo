@@ -21,8 +21,6 @@ class CreateMovementsTable extends Migration
             $table->string('policy');
             $table->dateTime('start_date');
             $table->dateTime('end_date');
-            $table->timestamps();
-
             $table->tinyInteger('deleted')->default(Movement::ACTIVE);
 
             $table->foreign('idObject')->references('idObject')->on('objects');

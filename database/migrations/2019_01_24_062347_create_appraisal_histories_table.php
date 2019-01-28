@@ -22,8 +22,6 @@ class CreateAppraisalHistoriesTable extends Migration
             $table->dateTime('date');
             $table->integer('updated_by')->unsigned()->nullable();
             $table->integer('authorized_by')->unsigned()->nullable();
-            $table->timestamps();
-
             $table->tinyInteger('deleted')->default(AppraisalHistory::ACTIVE);
 
             //definimos llavez foraneas.

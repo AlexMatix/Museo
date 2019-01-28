@@ -30,7 +30,6 @@ class CreateObjectInfoFieldsTable extends Migration
             $table->string('param2');
             $table->string('param3');
             $table->integer('objectcategoryid')->unsigned();
-
             $table->tinyInteger('deleted')->default(ObjectInfoField::ACTIVE);
 
 

@@ -17,22 +17,23 @@ class CreateDimensionsTable extends Migration
         Schema::create('dimensions', function (Blueprint $table) {
 
             $table->increments('idDimension');
-            $table->string('height_with_base',45);
-            $table->string('width_with_base',45);
-            $table->string('depth_with_base',45);
-            $table->string('diameter_with_base',45);
+            $table->string('height_with_base',45)->nullable();;
+            $table->string('width_with_base',45)->nullable();;
+            $table->string('depth_with_base',45)->nullable();;
+            $table->string('diameter_with_base',45)->nullable();;
             $table->float('height');
             $table->string('width',45);
             $table->string('depth',45);
             $table->string('diameter',45);
             $table->integer('idMeasure')->unsigned();
             $table->integer('idObject')->unsigned();
+            $table->timestamps();
 
             $table->tinyInteger('deleted')->default(Dimension::ACTIVE);
 
             //Definimos llaves foraneas
             $table->foreign('idMeasure')->references('idInventoryCatalogs')->on('inventory_catalogs');
-            $table->foreign('idObject')->references('idobject')->on('objects');
+            $table->foreign('idObject')->references('idObject')->on('objects');
         });
     }
 

@@ -24,7 +24,7 @@ class CreateObjectInfoDatasTable extends Migration
             $table->tinyInteger('deleted')->default(ObjectInfoField::ACTIVE);
 
 
-            $table->foreign('idObject')->references('idobject')->on('objects');
+            $table->foreign('idObject')->references('idObject')->on('objects');
             $table->foreign('idInfoField')->references('idObjectInfoFields')->on('object_info_fields');
 
         });

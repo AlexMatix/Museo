@@ -30,6 +30,7 @@ class CreateUserIntoFieldsTable extends Migration
             $table->string('param2',45);
             $table->string('param3',45);
             $table->integer('categoryid')->unsigned();
+            $table->timestamps();
 
             //Definimos las llaves foraneas.
             $table->foreign('categoryid')->references('idUserIntoCategories')->on('user_into_categories');

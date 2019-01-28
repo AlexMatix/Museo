@@ -23,10 +23,11 @@ class CreatePhotographiesTable extends Migration
             $table->string('path',45);
             $table->integer('idObject')->unsigned();
             $table->tinyInteger('deleted')->default(Photography::ACTIVE);
+            $table->timestamps();
 
 
             //Definimos las llaves foraneas.
-            $table->foreign('idObject')->references('idobject')->on('objects');
+            $table->foreign('idObject')->references('idObject')->on('objects');
         });
     }
 

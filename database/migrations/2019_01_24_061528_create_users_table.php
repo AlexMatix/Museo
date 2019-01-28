@@ -17,14 +17,13 @@ class CreateUsersTable extends Migration
             $table->increments('idUser');
             $table->string('username',45);
             $table->string('password');
-            $table->dateTime('created_at');
-            $table->dateTime('updated_at');
             $table->string('name');
             $table->string('lastname');
             $table->string('email')->unique();
             $table->string('phone');
             $table->string('lastaccess');
             $table->string('lastip');
+            $table->timestamps();
 
             $table->tinyInteger('deleted')->default(User::ACTIVE);
             $table->tinyInteger('suspended')->default(User::NOT_SUSPENDED);

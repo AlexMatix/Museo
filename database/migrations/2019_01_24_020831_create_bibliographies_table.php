@@ -27,11 +27,12 @@ class CreateBibliographiesTable extends Migration
             $table->string('city',45);
             $table->dateTime('date');
             $table->string('pages',45);
+            $table->timestamps();
 
             $table->tinyInteger('deleted')->default(Bibliography::ACTIVE);
 
             //Definimos llaves foraneas
-            $table->foreign('idResearch')->references('idResearche')->on('researches');
+            $table->foreign('idResearch')->references('idResearch')->on('researches');
         });
     }
 

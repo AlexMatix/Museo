@@ -16,7 +16,7 @@ class CreateResearchesTable extends Migration
     {
         Schema::create('researches', function (Blueprint $table) {
 
-            $table->increments('idResearche');
+            $table->increments('idResearch');
             $table->string('title',45);
             $table->string('technique_materials',45);
             $table->dateTime('date');
@@ -29,11 +29,14 @@ class CreateResearchesTable extends Migration
             $table->integer('author')->unsigned();
             $table->integer('origin')->unsigned();
             $table->integer('period')->unsigned();
+            $table->integer('idObject')->unsigned();
+            $table->timestamps();
 
 
             $table->tinyInteger('deleted')->default(Research::ACTIVE);
 
             //Definimos las llaves foraneas.
+            $table->foreign('idObject')->references('idObject')->on('objects');
             $table->foreign('author')->references('idInvestigationCatalog')->on('investigation_catalogs');
             $table->foreign('origin')->references('idInvestigationCatalog')->on('investigation_catalogs');
             $table->foreign('period')->references('idInvestigationCatalog')->on('investigation_catalogs');

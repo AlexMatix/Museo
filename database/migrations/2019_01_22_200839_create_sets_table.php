@@ -21,6 +21,7 @@ class CreateSetsTable extends Migration
             $table->integer('idCommunity')->unsigned();
             $table->text('description');
             $table->tinyInteger('deleted')->default(Set::ACTIVE);
+            $table->timestamps();
 
             //Definimos las llaves foraneas.
             $table->foreign('idCommunity')->references('idCommunities')->on('communities');

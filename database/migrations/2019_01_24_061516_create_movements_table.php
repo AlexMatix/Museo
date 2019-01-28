@@ -16,15 +16,16 @@ class CreateMovementsTable extends Migration
     {
         Schema::create('movements', function (Blueprint $table) {
             $table->increments('idMovement');
-            $table->integer('idobject')->unsigned();
+            $table->integer('idObject')->unsigned();
             $table->integer('idExhibition')->unsigned();
             $table->string('policy');
             $table->dateTime('start_date');
             $table->dateTime('end_date');
+            $table->timestamps();
 
             $table->tinyInteger('deleted')->default(Movement::ACTIVE);
 
-            $table->foreign('idobject')->references('idobject')->on('objects');
+            $table->foreign('idObject')->references('idObject')->on('objects');
             $table->foreign('idExhibition')->references('idExhibition')->on('exhibitions');
 
 

@@ -16,18 +16,19 @@ class CreateAppraisalHistoriesTable extends Migration
     {
         Schema::create('appraisal_histories', function (Blueprint $table) {
             $table->increments('idAppraisalHistories');
-            $table->integer('idobject')->unsigned();
+            $table->integer('idObject')->unsigned();
             $table->decimal('previous_appraisal',13,4);
             $table->decimal("new_appraisal",13,4);
             $table->dateTime('date');
             $table->integer('updated_by')->unsigned()->nullable();
             $table->integer('authorized_by')->unsigned()->nullable();
+            $table->timestamps();
 
             $table->tinyInteger('deleted')->default(AppraisalHistory::ACTIVE);
 
             //definimos llavez foraneas.
 
-            $table->foreign('idobject')->references('idobject')->on('objects');
+            $table->foreign('idObject')->references('idObject')->on('objects');
             $table->foreign('updated_by')->references('idUser')->on('users');
             $table->foreign('authorized_by')->references('idUser')->on('users');
 

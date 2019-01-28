@@ -29,6 +29,7 @@ class CreateOrganizationsTable extends Migration
             $table->string('state',45);
             $table->string('giro',45);
             $table->string('status',45);
+            $table->timestamps();
 
             $table->tinyInteger('deleted')->default(Organization::ACTIVE);
         });

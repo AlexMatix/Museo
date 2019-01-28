@@ -18,6 +18,8 @@ class User extends Authenticatable
     CONST DELETED = 0;
     CONST SUSPENDED = 1;
     CONST NOT_SUSPENDED = 0;
+
+
 //    protected $fillable = [
 //        'name', 'email', 'password',
 //    ];

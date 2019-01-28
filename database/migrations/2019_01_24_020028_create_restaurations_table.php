@@ -24,9 +24,10 @@ class CreateRestaurationsTable extends Migration
             $table->dateTime('date');
             $table->integer('idObject')->unsigned();
             $table->tinyInteger('deleted')->default(Restauration::ACTIVE);
+            $table->timestamps();
 
             //Definimos las llaves foraneas.
-            $table->foreign('idObject')->references('idobject')->on('objects');
+            $table->foreign('idObject')->references('idObject')->on('objects');
         });
     }
 

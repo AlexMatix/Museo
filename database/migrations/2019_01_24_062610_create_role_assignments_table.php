@@ -15,10 +15,16 @@ class CreateRoleAssignmentsTable extends Migration
     {
         Schema::create('role_assignments', function (Blueprint $table) {
             $table->increments('idRoleAssignments');
-            $table->integer('idRole');
-            $table->integer('idUser');
+            $table->integer('idRole')->unsigned();
+            $table->integer('idUser')->unsigned();
             $table->dateTime('timemodified');
+
+            //Definimos llaves foraneas
+            $table->foreign('idRole')->references('idRole')->on('roles');
+            $table->foreign('idUser')->references('idUser')->on('users');
         });
+
+
     }
 
     /**

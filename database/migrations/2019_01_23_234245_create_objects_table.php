@@ -16,15 +16,17 @@ class CreateObjectsTable extends Migration
     {
         Schema::create('objects', function (Blueprint $table) {
 
-            $table->increments('idobject');
-            $table->string('origin', 45);
+            $table->increments('idObject');
+            $table->string('origin_number', 45);
+            $table->string('inventory_number', 45);
+            $table->string('catalog_number', 45);
             $table->decimal('appraisal',13,4);
             $table->mediumText('origin_description');
-            $table->dateTime('created_at');
-            $table->dateTime('update_at');
+            $table->dateTime('date_of_entry');
+            $table->timestamps();
 
             $table->integer('collection_idCollection')->unsigned();
-            $table->integer('subCollection_idSubCollection')->unsigned();
+            $table->integer('subCollection_idSubCollection')->unsigned()->nullable();
             $table->integer('type')->unsigned();
             $table->integer('location')->unsigned();
 

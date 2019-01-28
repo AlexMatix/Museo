@@ -20,6 +20,7 @@ class CreateRolesTable extends Migration
             $table->string('description',45);
             $table->string('name',45);
             $table->string('archetype',45);
+            $table->timestamps();
             $table->tinyInteger('deleted')->default(Role::ACTIVE);
 
         });

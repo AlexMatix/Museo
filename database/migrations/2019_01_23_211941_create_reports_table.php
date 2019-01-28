@@ -20,7 +20,7 @@ class CreateReportsTable extends Migration
             $table->string('name', 45);
             $table->string('path', 90);
             $table->text('description');
-            $table->dateTime('created_at');
+            $table->timestamps();
             $table->tinyInteger('deleted')->default(Report::ACTIVE);
         });
     }

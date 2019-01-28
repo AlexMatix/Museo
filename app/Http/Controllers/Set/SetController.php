@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Set;
 
-use App\Set;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class SetsController extends Controller
+class SetController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,16 +16,6 @@ class SetsController extends Controller
     {
         $sets = Set::all();
         return response()->json([$sets], 200);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -53,17 +43,6 @@ class SetsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
     {
         //
     }

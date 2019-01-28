@@ -17,7 +17,7 @@ use Illuminate\Http\Request;
 //    return $request->user();
 //});
 
-Route::resource('objects', 'ObjectController');
-Route::resource('communities', 'CommunityController');
-Route::resource('sets', 'SetsController');
-Route::resource('collections', 'CollectionController');
+Route::resource('collections', 'Collection\CollectionController', ['except' => ['create','edit']]);
+Route::resource('communities', 'Community\CommunityController', ['except' => ['create','edit']]);
+Route::resource('objects', 'Object\ObjectController', ['except' => ['create','edit']]);
+Route::resource('sets', 'Set\SetController', ['except' => ['create','edit']]);

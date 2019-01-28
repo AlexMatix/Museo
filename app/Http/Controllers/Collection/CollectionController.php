@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Collection;
 
-use App\Collection;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class CollectionController extends Controller
 {
@@ -18,15 +18,6 @@ class CollectionController extends Controller
         return response()->json([$collections], 200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -57,16 +48,6 @@ class CollectionController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -75,6 +56,7 @@ class CollectionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function update(Request $request, $id)
     {
         $collection = Collection::findOrFail($id);
@@ -101,6 +83,7 @@ class CollectionController extends Controller
 
         $collection->save();
         return response()->json(['data' => $collection], 200);
+
     }
 
     /**

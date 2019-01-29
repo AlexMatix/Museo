@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Exhibition;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\ApiController;
 
-class ExhibitionController extends Controller
+class ExhibitionController extends ApiController
 {
     /**
      * Display a listing of the resource.

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\UserIntoField;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\ApiController;
 
-class UserIntoFieldController extends Controller
+class UserIntoFieldController extends ApiController
 {
     /**
      * Display a listing of the resource.

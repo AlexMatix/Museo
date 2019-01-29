@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\AppraisalHistory;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\ApiController;
 
-class AppraisalHistoryController extends Controller
+class AppraisalHistoryController extends ApiController
 {
     /**
      * Display a listing of the resource.

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\SubCollection;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\ApiController;
 
-class SubConllectionController extends Controller
+class SubConllectionController extends ApiController
 {
     /**
      * Display a listing of the resource.

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Collection;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\ApiController;
 
-class CollectionController extends Controller
+class CollectionController extends ApiController
 {
     /**
      * Display a listing of the resource.

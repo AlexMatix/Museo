@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\ObjectInfoField;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\ApiController;
 
-class ObjectInfoFieldController extends Controller
+class ObjectInfoFieldController extends ApiController
 {
     /**
      * Display a listing of the resource.

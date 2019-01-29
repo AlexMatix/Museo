@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Bibliography;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\ApiController;
 
-class BibliographyController extends Controller
+class BibliographyController extends ApiController
 {
     /**
      * Display a listing of the resource.

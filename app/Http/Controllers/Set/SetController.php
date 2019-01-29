@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Set;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\ApiController;
 
-class SetController extends Controller
+class SetController extends ApiController
 {
     /**
      * Display a listing of the resource.

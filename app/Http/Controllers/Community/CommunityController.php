@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Community;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\ApiController;
 
-class CommunityController extends Controller
+class CommunityController extends ApiController
 {
     /**
      * Display a listing of the resource.

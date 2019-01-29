@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Capabilities;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\ApiController;
 
-class CapabilitiesController extends Controller
+class CapabilitiesController extends ApiController
 {
     /**
      * Display a listing of the resource.

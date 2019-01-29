@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Photography;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\ApiController;
 
-class PhotographyController extends Controller
+class PhotographyController extends ApiController
 {
     /**
      * Display a listing of the resource.

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\InvestigationCatalog;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\ApiController;
 
-class InvestigationCatalogController extends Controller
+class InvestigationCatalogController extends ApiController
 {
     /**
      * Display a listing of the resource.

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\RoleAssignments;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\ApiController;
 
-class RoleAssignmentsController extends Controller
+class RoleAssignmentsController extends ApiController
 {
     /**
      * Display a listing of the resource.

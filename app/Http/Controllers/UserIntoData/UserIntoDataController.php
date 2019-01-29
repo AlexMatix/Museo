@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\UserIntoData;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\ApiController;
 
-class UserIntoDataController extends Controller
+class UserIntoDataController extends ApiController
 {
     /**
      * Display a listing of the resource.

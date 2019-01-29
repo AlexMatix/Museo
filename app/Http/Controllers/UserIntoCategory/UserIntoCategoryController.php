@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\UserIntoCategory;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\ApiController;
 
-class UserIntoCategoryController extends Controller
+class UserIntoCategoryController extends ApiController
 {
     /**
      * Display a listing of the resource.

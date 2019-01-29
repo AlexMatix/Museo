@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Http\response;
 
-class ApiResponse
+trait ApiResponse
 {
     private function successResponse($data, $code = 200){
         return response()->json($data, $code);

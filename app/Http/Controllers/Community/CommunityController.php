@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Community;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
+use App\Community;
 
 class CommunityController extends ApiController
 {
@@ -14,10 +15,8 @@ class CommunityController extends ApiController
      */
     public function index()
     {
-        $objects = Community::all();
-        return response()->json([$objects], 200);
+        return $this->showList(Community::where('deleted','=',1)->get());
     }
-
 
     /**
      * Store a newly created resource in storage.
@@ -27,14 +26,13 @@ class CommunityController extends ApiController
      */
     public function store(Request $request)
     {
-        $data = $request->json()->all();
-        $community = Community::create([
-            'name' => $data['name'],
-            'director' => $data['director'],
-            'address' => $data['address']
-        ]);
-
-        return response()->json([$community], 201);
+        $data = $request->all();
+        return $this->showOne(Community::create($data));
+//        $community = Community::create([
+//            'name' => $data['name'],
+//            'director' => $data['director'],
+//            'address' => $data['address']
+//        ]);
     }
 
     /**
@@ -45,7 +43,7 @@ class CommunityController extends ApiController
      */
     public function show($id)
     {
-        //
+        return $this->showOne(Community::findOrFail($id));
     }
 
     /**
@@ -68,6 +66,16 @@ class CommunityController extends ApiController
      */
     public function destroy($id)
     {
-        //
+        $community  = Community::findOrFail($id);
+        $community->deleted = Community::DELETED;
+
+        try{
+            $community->save();
+        }catch (Exception $e){
+            return $this->errorResponse("Error: No se pudo eliminar", 500);
+        }
+
+        return $this->succesMessaje("Registro eliminado");
+
     }
 }

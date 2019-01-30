@@ -101,5 +101,9 @@ class CollectionController extends ApiController
 
     }
 
+    public function getAllCollection($idSet){
+
+    }
+
 
 }

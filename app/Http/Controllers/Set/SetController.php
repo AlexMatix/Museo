@@ -94,4 +94,8 @@ class SetController extends ApiController
 
         return $this->errorResponse("No se pudo eliminar registro", 500);
     }
+
+    public function getAllSet($id){
+
+    }
 }

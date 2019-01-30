@@ -32,7 +32,7 @@ class CreateResearchesTable extends Migration
             $table->tinyInteger('deleted')->default(Research::ACTIVE);
 
             //Definimos las llaves foraneas.
-            $table->foreign('idObject')->references('idObject')->on('objects');
+            $table->foreign('idObject')->references('idObject')->on('object_museums');
             $table->foreign('author')->references('idInvestigationCatalog')->on('investigation_catalogs');
             $table->foreign('origin')->references('idInvestigationCatalog')->on('investigation_catalogs');
             $table->foreign('period')->references('idInvestigationCatalog')->on('investigation_catalogs');

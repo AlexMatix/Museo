@@ -25,7 +25,7 @@ class CreatePhotographiesTable extends Migration
             $table->tinyInteger('deleted')->default(Photography::ACTIVE);
 
             //Definimos las llaves foraneas.
-            $table->foreign('idObject')->references('idObject')->on('objects');
+            $table->foreign('idObject')->references('idObject')->on('object_museums');
         });
     }
 

@@ -14,7 +14,7 @@ class SetController extends ApiController
      */
     public function index()
     {
-        return $this->showList(Set::where('delete','=', Set::ACTIVE));
+        return $this->showList(Set::where('deleted','=', Set::ACTIVE)->get());
     }
 
     /**

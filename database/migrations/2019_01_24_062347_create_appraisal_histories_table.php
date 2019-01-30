@@ -26,7 +26,7 @@ class CreateAppraisalHistoriesTable extends Migration
 
             //definimos llavez foraneas.
 
-            $table->foreign('idObject')->references('idObject')->on('objects');
+            $table->foreign('idObject')->references('idObject')->on('object_museums');
             $table->foreign('updated_by')->references('idUser')->on('users');
             $table->foreign('authorized_by')->references('idUser')->on('users');
 

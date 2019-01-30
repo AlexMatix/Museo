@@ -4,7 +4,7 @@ namespace App\Http\Controllers\ObjectInfoData;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
-
+use App\ObjectInfoData;
 class ObjectInfoDataController extends ApiController
 {
     /**
@@ -14,17 +14,7 @@ class ObjectInfoDataController extends ApiController
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return $this->showList(ObjectInfoData::where('deleted','=',ObjectInfoData::ACTIVE)->get());
     }
 
     /**
@@ -35,7 +25,7 @@ class ObjectInfoDataController extends ApiController
      */
     public function store(Request $request)
     {
-        //
+        return $this->showOne(ObjectInfoData::create($request->all()));
     }
 
     /**
@@ -46,19 +36,9 @@ class ObjectInfoDataController extends ApiController
      */
     public function show($id)
     {
-        //
+        return $this->showOne(ObjectInfoData::findOrFail($id));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -80,6 +60,15 @@ class ObjectInfoDataController extends ApiController
      */
     public function destroy($id)
     {
-        //
+        $objectInfoData  = ObjectInfoData::findOrFail($id);
+        $objectInfoData->deleted = ObjectInfoData::DELETED;
+
+        try{
+            $objectInfoData->save();
+        }catch (Exception $e){
+            return $this->errorResponse("Error: No se pudo eliminar", 500);
+        }
+
+        return $this->succesMessaje("Registro eliminado");
     }
 }

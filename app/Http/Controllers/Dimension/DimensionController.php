@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dimension;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
+use App\Dimension;
 
 class DimensionController extends ApiController
 {
@@ -14,17 +15,8 @@ class DimensionController extends ApiController
      */
     public function index()
     {
-        //
-    }
+        return $this->showList(Dimension::where('deleted','=',Dimension::ACTIVE)->get());
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -35,7 +27,7 @@ class DimensionController extends ApiController
      */
     public function store(Request $request)
     {
-        //
+        return $this->showOne(Dimension::create($request->all()));
     }
 
     /**
@@ -46,19 +38,9 @@ class DimensionController extends ApiController
      */
     public function show($id)
     {
-        //
+        return $this->showOne(Dimension::findOrFail($id));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -80,6 +62,15 @@ class DimensionController extends ApiController
      */
     public function destroy($id)
     {
-        //
+        $dimension  = Dimension::findOrFail($id);
+        $dimension->deleted = Dimension::DELETED;
+
+        try{
+            $dimension->save();
+        }catch (Exception $e){
+            return $this->errorResponse("Error: No se pudo eliminar", 500);
+        }
+
+        return $this->succesMessaje("Registro eliminado");
     }
 }

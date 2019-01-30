@@ -4,6 +4,7 @@ namespace App\Http\Controllers\InventoryCatalog;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
+use App\InventoryCatalog;
 
 class InventoryCatalogController extends ApiController
 {
@@ -14,18 +15,9 @@ class InventoryCatalogController extends ApiController
      */
     public function index()
     {
-        //
+        return $this->showList(InventoryCatalog::where('deleted','=',InventoryCatalog::ACTIVE)->get());
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -35,7 +27,7 @@ class InventoryCatalogController extends ApiController
      */
     public function store(Request $request)
     {
-        //
+        return $this->showOne(InventoryCatalog::create($request->all()));
     }
 
     /**
@@ -46,18 +38,7 @@ class InventoryCatalogController extends ApiController
      */
     public function show($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        return $this->showOne(InventoryCatalog::findOrFail($id));
     }
 
     /**
@@ -80,6 +61,15 @@ class InventoryCatalogController extends ApiController
      */
     public function destroy($id)
     {
-        //
+        $inventory  = InventoryCatalog::findOrFail($id);
+        $inventory->deleted = InventoryCatalog::DELETED;
+
+        try{
+            $inventory->save();
+        }catch (Exception $e){
+            return $this->errorResponse("Error: No se pudo eliminar", 500);
+        }
+
+        return $this->succesMessaje("Registro eliminado");
     }
 }

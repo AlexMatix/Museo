@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Object;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
+use App\Object;
 
 class ObjectController extends ApiController
 {
@@ -14,8 +15,7 @@ class ObjectController extends ApiController
      */
     public function index()
     {
-        $objects = Object::all();
-        return response()->json([$objects], 200);
+        return $this->showList(Object::where('deleted','=',Object::ACTIVE));
     }
 
     /**
@@ -26,20 +26,22 @@ class ObjectController extends ApiController
      */
     public function store(Request $request)
     {
-        $data = $request->json()->all();
-        $object = Object::create([
-            'origin_number' => $data['origin_number'],
-            'catalog_number' => $data['catalog_number'],
-            'appraisal' => $data['appraisal'],
-            'origin_description' => $data['origin_description'],
-            'date_of_entry' => $data['date_of_entry'],
-            'collection_idCollection' => $data['collection_idCollection'],
-            'subCollection_idSubCollection' => $data['subCollection_idSubCollection'],
-            'type' => $data['type'],
-            'location' => $data['location'],
-        ]);
+        return $this->showOne(Object::create($request->all()));
 
-        return response()->json([$object], 201);
+//        $data = $request->json()->all();
+//        $object = Object::create([
+//            'origin_number' => $data['origin_number'],
+//            'catalog_number' => $data['catalog_number'],
+//            'appraisal' => $data['appraisal'],
+//            'origin_description' => $data['origin_description'],
+//            'date_of_entry' => $data['date_of_entry'],
+//            'collection_idCollection' => $data['collection_idCollection'],
+//            'subCollection_idSubCollection' => $data['subCollection_idSubCollection'],
+//            'type' => $data['type'],
+//            'location' => $data['location'],
+//        ]);
+//
+//        return response()->json([$object], 201);
     }
 
     /**
@@ -50,7 +52,7 @@ class ObjectController extends ApiController
      */
     public function show($id)
     {
-        //
+        return $this->showOne(Object::findOrFail($id));
     }
 
     /**
@@ -73,6 +75,15 @@ class ObjectController extends ApiController
      */
     public function destroy($id)
     {
-        //
+        $community  = Object::findOrFail($id);
+        $community->deleted = Object::DELETED;
+
+        try{
+            $community->save();
+        }catch (Exception $e){
+            return $this->errorResponse("Error: No se pudo eliminar", 500);
+        }
+
+        return $this->succesMessaje("Registro eliminado");
     }
 }

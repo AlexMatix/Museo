@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Set;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
-
+use App\Set;
 class SetController extends ApiController
 {
     /**
@@ -14,8 +14,7 @@ class SetController extends ApiController
      */
     public function index()
     {
-        $sets = Set::all();
-        return response()->json([$sets], 200);
+        return $this->showList(Set::where('delete','=', Set::ACTIVE));
     }
 
     /**
@@ -26,14 +25,7 @@ class SetController extends ApiController
      */
     public function store(Request $request)
     {
-        $data = $request->json()->all();
-        $set = Set::create([
-            'title' => $data['title'],
-            'idCommunity' => $data['idCommunity'],
-            'description' => $data['description']
-        ]);
-
-        return response()->json([$set], 201);
+        return $this->showOne(Set::create($request->all()));
     }
 
     /**
@@ -44,7 +36,7 @@ class SetController extends ApiController
      */
     public function show($id)
     {
-        //
+        return $this->showOne(Set::findOrFail($id));
     }
 
     /**
@@ -75,11 +67,14 @@ class SetController extends ApiController
         }
 
         if (!$set->isDirty()) {
-            return response()->json(['error' => 'Se debe especificar al menos un valor diferente para actualizar'], 422);
+            return $this->errorResponse('Se debe especificar al menos un valor diferente para actualizar', 422);
         }
 
-        $set->save();
-        return response()->json(['data' => $set], 200);
+        if($set->save()){
+            return $this->showOne($set);
+        }else{
+            return $this->errorResponse('No se pudo guardar los cambios', 500);
+        }
         //
     }
 
@@ -91,6 +86,12 @@ class SetController extends ApiController
      */
     public function destroy($id)
     {
-        //
+        $set = Set::findOrFail($id);
+        $set->deleted = Set::DELETED;
+        if($set->save()){
+            return $this->showOne($set);
+        }
+
+        return $this->errorResponse("No se pudo eliminar registro", 500);
     }
 }

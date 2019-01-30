@@ -14,10 +14,8 @@ class CollectionController extends ApiController
      */
     public function index()
     {
-        $collections = Collection::all();
-        return response()->json([$collections], 200);
+        return $this->showList(Community::where('deleted','=',Community::ACTIVE)->get());
     }
-
 
     /**
      * Store a newly created resource in storage.
@@ -27,14 +25,12 @@ class CollectionController extends ApiController
      */
     public function store(Request $request)
     {
-        $data = $request->json()->all();
-        $collection = Collection::create([
-            'name' => $data['name'],
-            'idSet' => $data['idSet'],
-            'description' => $data['description']
-        ]);
-
-        return response()->json([$collection], 201);
+        return $this->showOne(Community::create($request->all()));
+//        $collection = Community::create([
+//            'name' => $data['name'],
+//            'director' => $data['director'],
+//            'address' => $data['address']
+//        ]);
     }
 
     /**
@@ -45,9 +41,8 @@ class CollectionController extends ApiController
      */
     public function show($id)
     {
-        //
+        return $this->showOne(Community::findOrFail($id));
     }
-
 
     /**
      * Update the specified resource in storage.
@@ -56,7 +51,6 @@ class CollectionController extends ApiController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
     public function update(Request $request, $id)
     {
         $collection = Collection::findOrFail($id);
@@ -94,6 +88,18 @@ class CollectionController extends ApiController
      */
     public function destroy($id)
     {
-        //
+        $collection  = Community::findOrFail($id);
+        $collection->deleted = Community::DELETED;
+
+        try{
+            $collection->save();
+        }catch (Exception $e){
+            return $this->errorResponse("Error: No se pudo eliminar", 500);
+        }
+
+        return $this->succesMessaje("Registro eliminado");
+
     }
+
+
 }

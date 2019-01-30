@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Bibliography;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
+use App\Bibliography;
 
 class BibliographyController extends ApiController
 {
@@ -14,18 +15,9 @@ class BibliographyController extends ApiController
      */
     public function index()
     {
-        //
+        return $this->showList(Bibliography::where('deleted','=',Bibliography::ACTIVE)->get());
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -35,7 +27,8 @@ class BibliographyController extends ApiController
      */
     public function store(Request $request)
     {
-        //
+        return $this->showOne(Bibliography::create($request->all()));
+
     }
 
     /**
@@ -46,18 +39,7 @@ class BibliographyController extends ApiController
      */
     public function show($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        return $this->showOne(Bibliography::findOrFail($id));
     }
 
     /**
@@ -80,6 +62,15 @@ class BibliographyController extends ApiController
      */
     public function destroy($id)
     {
-        //
+        $bibliography= Bibliography::findOrFail($id);
+        $bibliography->deleted = Bibliography::DELETED;
+
+        try{
+            $bibliography->save();
+        }catch (Exception $e){
+            return $this->errorResponse("Error: No se pudo eliminar", 500);
+        }
+
+        return $this->succesMessaje("Registro eliminado");
     }
 }

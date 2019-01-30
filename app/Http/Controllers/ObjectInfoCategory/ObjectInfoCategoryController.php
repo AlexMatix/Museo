@@ -4,6 +4,7 @@ namespace App\Http\Controllers\ObjectInfoCategory;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
+use App\ObjectInfoCategory;
 
 class ObjectInfoCategoryController extends ApiController
 {
@@ -14,17 +15,7 @@ class ObjectInfoCategoryController extends ApiController
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return $this->showAll(ObjectInfoCategory::all());
     }
 
     /**
@@ -35,7 +26,7 @@ class ObjectInfoCategoryController extends ApiController
      */
     public function store(Request $request)
     {
-        //
+        return $this->showOne(ObjectInfoCategory::create($request->all()));
     }
 
     /**
@@ -46,18 +37,7 @@ class ObjectInfoCategoryController extends ApiController
      */
     public function show($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        return $this->showOne(ObjectInfoCategory::findOrFail($id));
     }
 
     /**
@@ -80,6 +60,11 @@ class ObjectInfoCategoryController extends ApiController
      */
     public function destroy($id)
     {
-        //
+        try{
+            ObjectInfoCategory::destroy($id);
+            return $this->succesMessaje("Registro eliminado");
+        }catch (Exception $e){
+            return $this->errorResponse("Error: No se pudo eliminar registro");
+        }
     }
 }

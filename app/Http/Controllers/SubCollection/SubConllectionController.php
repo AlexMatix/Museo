@@ -4,6 +4,7 @@ namespace App\Http\Controllers\SubCollection;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
+use App\SubCollection;
 
 class SubConllectionController extends ApiController
 {
@@ -14,17 +15,7 @@ class SubConllectionController extends ApiController
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return $this->showList(SubCollection::where('deleted','=',SubCollection::ACTIVE)->get());
     }
 
     /**
@@ -35,7 +26,7 @@ class SubConllectionController extends ApiController
      */
     public function store(Request $request)
     {
-        //
+        return $this->showOne(SubCollection::create($request->all()));
     }
 
     /**
@@ -46,18 +37,7 @@ class SubConllectionController extends ApiController
      */
     public function show($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        return $this->showOne(SubCollection::findOrFail($id));
     }
 
     /**
@@ -80,6 +60,15 @@ class SubConllectionController extends ApiController
      */
     public function destroy($id)
     {
-        //
+        $subCollection  = SubCollection::findOrFail($id);
+        $subCollection->deleted = SubCollection::DELETED;
+
+        try{
+            $subCollection->save();
+        }catch (Exception $e){
+            return $this->errorResponse("Error: No se pudo eliminar", 500);
+        }
+
+        return $this->succesMessaje("Registro eliminado");
     }
 }

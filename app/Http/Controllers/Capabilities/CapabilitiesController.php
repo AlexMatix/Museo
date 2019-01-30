@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Capabilities;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
+use App\Capabilities;
 
 class CapabilitiesController extends ApiController
 {
@@ -14,17 +15,7 @@ class CapabilitiesController extends ApiController
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return $this->showList(Capabilities::where('deleted','=',Capabilities::ACTIVE)->get());
     }
 
     /**
@@ -35,7 +26,7 @@ class CapabilitiesController extends ApiController
      */
     public function store(Request $request)
     {
-        //
+        return $this->showOne(Capabilities::create($request->all()));
     }
 
     /**
@@ -46,19 +37,9 @@ class CapabilitiesController extends ApiController
      */
     public function show($id)
     {
-        //
+        return $this->showOne(Capabilities::findOrFail($id));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -80,6 +61,11 @@ class CapabilitiesController extends ApiController
      */
     public function destroy($id)
     {
-        //
+        try{
+            Capabilities::destroy($id);
+            return $this->succesMessaje("Registro eliminado");
+        }catch (Exception $e){
+            return $this->errorResponse("Error al eliminar registro", 500);
+        }
     }
 }

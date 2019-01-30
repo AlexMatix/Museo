@@ -15,7 +15,7 @@ class CommunityController extends ApiController
      */
     public function index()
     {
-        return $this->showList(Community::where('deleted','=',1)->get());
+        return $this->showList(Community::where('deleted','=',Community::ACTIVE)->get());
     }
 
     /**
@@ -26,8 +26,7 @@ class CommunityController extends ApiController
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-        return $this->showOne(Community::create($data));
+        return $this->showOne(Community::create($request->all()));
 //        $community = Community::create([
 //            'name' => $data['name'],
 //            'director' => $data['director'],

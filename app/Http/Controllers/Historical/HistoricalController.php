@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Historical;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
+use App\Historical;
 
 class HistoricalController extends ApiController
 {
@@ -14,17 +15,7 @@ class HistoricalController extends ApiController
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return $this->showList(Historical::where('deleted','=',Historical::ACTIVE)->get());
     }
 
     /**
@@ -35,7 +26,7 @@ class HistoricalController extends ApiController
      */
     public function store(Request $request)
     {
-        //
+        return $this->showOne(Historical::create($request->all()));
     }
 
     /**
@@ -46,18 +37,7 @@ class HistoricalController extends ApiController
      */
     public function show($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        return $this->showOne(Historical::findOrFail($id));
     }
 
     /**
@@ -80,6 +60,15 @@ class HistoricalController extends ApiController
      */
     public function destroy($id)
     {
-        //
+        $historical  = Historical::findOrFail($id);
+        $historical->deleted = Historical::DELETED;
+
+        try{
+            $historical->save();
+        }catch (Exception $e){
+            return $this->errorResponse("Error: No se pudo eliminar", 500);
+        }
+
+        return $this->succesMessaje("Registro eliminado");
     }
 }

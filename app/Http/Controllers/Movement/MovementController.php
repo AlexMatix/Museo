@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Movement;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
+use App\Movement;
 
 class MovementController extends ApiController
 {
@@ -14,17 +15,7 @@ class MovementController extends ApiController
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return $this->showList(Movement::where('deleted','=',Movement::ACTIVE)->get());
     }
 
     /**
@@ -35,7 +26,7 @@ class MovementController extends ApiController
      */
     public function store(Request $request)
     {
-        //
+        return $this->showOne(Movement::create($request->all()));
     }
 
     /**
@@ -46,18 +37,7 @@ class MovementController extends ApiController
      */
     public function show($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        return $this->showOne(Movement::findOrFail($id));
     }
 
     /**
@@ -80,6 +60,15 @@ class MovementController extends ApiController
      */
     public function destroy($id)
     {
-        //
+        $movement  = Movement::findOrFail($id);
+        $movement->deleted = Movement::DELETED;
+
+        try{
+            $movement->save();
+        }catch (Exception $e){
+            return $this->errorResponse("Error: No se pudo eliminar", 500);
+        }
+
+        return $this->succesMessaje("Registro eliminado");
     }
 }

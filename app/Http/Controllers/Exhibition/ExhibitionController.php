@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Exhibition;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
+use App\Exhibition;
 
 class ExhibitionController extends ApiController
 {
@@ -14,17 +15,7 @@ class ExhibitionController extends ApiController
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return $this->showList(Exhibition::where('deleted','=',Exhibition::ACTIVE)->get());
     }
 
     /**
@@ -35,7 +26,7 @@ class ExhibitionController extends ApiController
      */
     public function store(Request $request)
     {
-        //
+        return $this->showOne(Exhibition::create($request->all()));
     }
 
     /**
@@ -46,19 +37,9 @@ class ExhibitionController extends ApiController
      */
     public function show($id)
     {
-        //
+        return $this->showOne(Exhibition::findOrFail($id));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -80,6 +61,15 @@ class ExhibitionController extends ApiController
      */
     public function destroy($id)
     {
-        //
+        $exhibition  = Exhibition::findOrFail($id);
+        $exhibition->deleted = Exhibition::DELETED;
+
+        try{
+            $exhibition->save();
+        }catch (Exception $e){
+            return $this->errorResponse("Error: No se pudo eliminar", 500);
+        }
+
+        return $this->succesMessaje("Registro eliminado");
     }
 }

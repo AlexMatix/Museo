@@ -75,6 +75,7 @@ class ComposerStaticInit9c703c50504a400cd10ab31a88a65fc7
         array (
             'League\\Flysystem\\' => 17,
             'Laravel\\Tinker\\' => 15,
+            'Laravel\\Homestead\\' => 18,
         ),
         'J' => 
         array (
@@ -221,6 +222,10 @@ class ComposerStaticInit9c703c50504a400cd10ab31a88a65fc7
         array (
             0 => __DIR__ . '/..' . '/laravel/tinker/src',
         ),
+        'Laravel\\Homestead\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laravel/homestead/src',
+        ),
         'JakubOnderka\\PhpConsoleHighlighter\\' => 
         array (
             0 => __DIR__ . '/..' . '/jakub-onderka/php-console-highlighter/src',
@@ -319,7 +324,7 @@ class ComposerStaticInit9c703c50504a400cd10ab31a88a65fc7
         'App\\Http\\Controllers\\ObjectInfoCategory\\ObjectInfoCategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/ObjectInfoCategory/ObjectInfoCategoryController.php',
         'App\\Http\\Controllers\\ObjectInfoData\\ObjectInfoDataController' => __DIR__ . '/../..' . '/app/Http/Controllers/ObjectInfoData/ObjectInfoDataController.php',
         'App\\Http\\Controllers\\ObjectInfoField\\ObjectInfoFieldController' => __DIR__ . '/../..' . '/app/Http/Controllers/ObjectInfoField/ObjectInfoFieldController.php',
-        'App\\Http\\Controllers\\Object\\ObjectController' => __DIR__ . '/../..' . '/app/Http/Controllers/Object/ObjectController.php',
+        'App\\Http\\Controllers\\ObjectMuseum\\ObjectController' => __DIR__ . '/../..' . '/app/Http/Controllers/ObjectMuseum/ObjectController.php',
         'App\\Http\\Controllers\\Organization\\OrganizationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Organization/OrganizationController.php',
         'App\\Http\\Controllers\\Photography\\PhotographyController' => __DIR__ . '/../..' . '/app/Http/Controllers/Photography/PhotographyController.php',
         'App\\Http\\Controllers\\Places\\PlacesController' => __DIR__ . '/../..' . '/app/Http/Controllers/Places/PlacesController.php',
@@ -342,10 +347,10 @@ class ComposerStaticInit9c703c50504a400cd10ab31a88a65fc7
         'App\\InventoryCatalog' => __DIR__ . '/../..' . '/app/InventoryCatalog.php',
         'App\\InvestigationCatalog' => __DIR__ . '/../..' . '/app/InvestigationCatalog.php',
         'App\\Movement' => __DIR__ . '/../..' . '/app/Movement.php',
-        'App\\Object' => __DIR__ . '/../..' . '/app/Object.php',
         'App\\ObjectInfoCategory' => __DIR__ . '/../..' . '/app/ObjectInfoCategory.php',
         'App\\ObjectInfoData' => __DIR__ . '/../..' . '/app/ObjectInfoData.php',
         'App\\ObjectInfoField' => __DIR__ . '/../..' . '/app/ObjectInfoField.php',
+        'App\\ObjectMuseum' => __DIR__ . '/../..' . '/app/ObjectMuseum.php',
         'App\\Organization' => __DIR__ . '/../..' . '/app/Organization.php',
         'App\\Photography' => __DIR__ . '/../..' . '/app/Photography.php',
         'App\\Places' => __DIR__ . '/../..' . '/app/Places.php',
@@ -1682,6 +1687,7 @@ class ComposerStaticInit9c703c50504a400cd10ab31a88a65fc7
         'JakubOnderka\\PhpConsoleColor\\InvalidStyleException' => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src/InvalidStyleException.php',
         'JakubOnderka\\PhpConsoleHighlighter\\Highlighter' => __DIR__ . '/..' . '/jakub-onderka/php-console-highlighter/src/Highlighter.php',
         'JsonSerializable' => __DIR__ . '/..' . '/nesbot/carbon/src/JsonSerializable.php',
+        'Laravel\\Homestead\\MakeCommand' => __DIR__ . '/..' . '/laravel/homestead/src/MakeCommand.php',
         'Laravel\\Tinker\\ClassAliasAutoloader' => __DIR__ . '/..' . '/laravel/tinker/src/ClassAliasAutoloader.php',
         'Laravel\\Tinker\\Console\\TinkerCommand' => __DIR__ . '/..' . '/laravel/tinker/src/Console/TinkerCommand.php',
         'Laravel\\Tinker\\TinkerCaster' => __DIR__ . '/..' . '/laravel/tinker/src/TinkerCaster.php',

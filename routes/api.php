@@ -24,3 +24,7 @@ Route::resource('communities', 'Community\CommunityController', ['except' => ['c
 Route::resource('objects', 'ObjectMuseum\ObjectController', ['except' => ['create','edit']]);
 Route::resource('sets', 'Set\SetController', ['except' => ['create','edit']]);
 Route::resource('community', 'Community\CommunityController', ['except' => ['create','edit']]);
+
+
+/**************************RUTAS JOIN******************************************************/
+Route::get('getAllCollection/{idSet}','Collection\CollectionController@getAllCollection');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Collection;
 use App\Collection;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
+use Illuminate\Support\Facades\DB;
 
 class CollectionController extends ApiController
 {
@@ -104,6 +105,13 @@ class CollectionController extends ApiController
 
     public function getAllCollection($idSet){
 
+        return $this->showList( DB::table('collections')
+                        ->join('sets','sets.idSet','=','collections.idSet')
+                        ->join('sub_collections', 'sub_collections.idCollection','=','collections.idCollection')
+                        ->join('object_museums','object_museums.idObject','=','collections.idCollection')
+                        ->where('collections.idSet', '=',"$idSet")
+                        ->select('*')
+                        ->get() );
     }
 
 

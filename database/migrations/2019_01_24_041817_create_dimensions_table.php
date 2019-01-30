@@ -31,7 +31,7 @@ class CreateDimensionsTable extends Migration
 
             //Definimos llaves foraneas
             $table->foreign('idMeasure')->references('idInventoryCatalogs')->on('inventory_catalogs');
-            $table->foreign('idObject')->references('idObject')->on('objects');
+            $table->foreign('idObject')->references('idObject')->on('object_museums');
         });
     }
 

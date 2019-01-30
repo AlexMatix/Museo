@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use App\Object;
+use App\ObjectMuseum;
 
 class CreateObjectsTable extends Migration
 {
@@ -14,7 +14,7 @@ class CreateObjectsTable extends Migration
      */
     public function up()
     {
-        Schema::create('objects', function (Blueprint $table) {
+        Schema::create('object_museums', function (Blueprint $table) {
 
             $table->increments('idObject');
             $table->string('origin_number', 45);
@@ -27,7 +27,7 @@ class CreateObjectsTable extends Migration
             $table->integer('subCollection_idSubCollection')->unsigned()->nullable();
             $table->integer('type')->unsigned();
             $table->integer('location')->unsigned();
-            $table->tinyInteger('deleted')->default(Object::ACTIVE);
+            $table->tinyInteger('deleted')->default(ObjectMuseum::ACTIVE);
 
             //Definimos las llaves foraneas.
             $table->foreign('collection_idCollection')->references('idCollection')->on('collections');

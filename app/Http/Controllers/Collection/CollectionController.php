@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Collection;
 
+use App\Collection;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
 
@@ -14,7 +15,7 @@ class CollectionController extends ApiController
      */
     public function index()
     {
-        return $this->showList(Community::where('deleted','=',Community::ACTIVE)->get());
+        return $this->showList(Collection::where('deleted','=',Collection::ACTIVE)->get());
     }
 
     /**
@@ -25,7 +26,7 @@ class CollectionController extends ApiController
      */
     public function store(Request $request)
     {
-        return $this->showOne(Community::create($request->all()));
+        return $this->showOne(Collection::create($request->all()));
 //        $collection = Community::create([
 //            'name' => $data['name'],
 //            'director' => $data['director'],
@@ -41,7 +42,7 @@ class CollectionController extends ApiController
      */
     public function show($id)
     {
-        return $this->showOne(Community::findOrFail($id));
+        return $this->showOne(Collection::findOrFail($id));
     }
 
     /**
@@ -88,8 +89,8 @@ class CollectionController extends ApiController
      */
     public function destroy($id)
     {
-        $collection  = Community::findOrFail($id);
-        $collection->deleted = Community::DELETED;
+        $collection  = Collection::findOrFail($id);
+        $collection->deleted = Collection::DELETED;
 
         try{
             $collection->save();

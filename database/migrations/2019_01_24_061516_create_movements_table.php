@@ -23,7 +23,7 @@ class CreateMovementsTable extends Migration
             $table->dateTime('end_date');
             $table->tinyInteger('deleted')->default(Movement::ACTIVE);
 
-            $table->foreign('idObject')->references('idObject')->on('objects');
+            $table->foreign('idObject')->references('idObject')->on('object_museums');
             $table->foreign('idExhibition')->references('idExhibition')->on('exhibitions');
 
 

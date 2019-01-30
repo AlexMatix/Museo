@@ -21,6 +21,6 @@ use Illuminate\Http\Request;
 Route::resource('collections', 'Collection\CollectionController', ['except' => ['create','edit']]);
 Route::resource('sub-collections', 'SubCollection\SubConllectionController', ['except' => ['create','edit']]);
 Route::resource('communities', 'Community\CommunityController', ['except' => ['create','edit']]);
-Route::resource('objects', 'Object\ObjectController', ['except' => ['create','edit']]);
+Route::resource('objects', 'ObjectMuseum\ObjectController', ['except' => ['create','edit']]);
 Route::resource('sets', 'Set\SetController', ['except' => ['create','edit']]);
 Route::resource('community', 'Community\CommunityController', ['except' => ['create','edit']]);

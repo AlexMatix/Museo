@@ -22,7 +22,7 @@ class CreateObjectInfoDatasTable extends Migration
             $table->integer('idInfoField')->unsigned();
             $table->tinyInteger('deleted')->default(ObjectInfoField::ACTIVE);
 
-            $table->foreign('idObject')->references('idObject')->on('objects');
+            $table->foreign('idObject')->references('idObject')->on('object_museums');
             $table->foreign('idInfoField')->references('idObjectInfoFields')->on('object_info_fields');
 
         });

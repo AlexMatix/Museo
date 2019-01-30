@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Object;
+namespace App\Http\Controllers\ObjectMuseum;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
-use App\Object;
+use App\ObjectMuseum;
 
 class ObjectController extends ApiController
 {
@@ -15,7 +15,7 @@ class ObjectController extends ApiController
      */
     public function index()
     {
-        return $this->showList(Object::where('deleted','=',Object::ACTIVE));
+        return $this->showList(ObjectMuseum::where('deleted','=',ObjectMuseum::ACTIVE)->get());
     }
 
     /**
@@ -26,10 +26,10 @@ class ObjectController extends ApiController
      */
     public function store(Request $request)
     {
-        return $this->showOne(Object::create($request->all()));
+        return $this->showOne(ObjectMuseum::create($request->all()));
 
 //        $data = $request->json()->all();
-//        $object = Object::create([
+//        $object = ObjectMuseum::create([
 //            'origin_number' => $data['origin_number'],
 //            'catalog_number' => $data['catalog_number'],
 //            'appraisal' => $data['appraisal'],
@@ -52,7 +52,7 @@ class ObjectController extends ApiController
      */
     public function show($id)
     {
-        return $this->showOne(Object::findOrFail($id));
+        return $this->showOne(ObjectMuseum::findOrFail($id));
     }
 
     /**
@@ -75,8 +75,8 @@ class ObjectController extends ApiController
      */
     public function destroy($id)
     {
-        $community  = Object::findOrFail($id);
-        $community->deleted = Object::DELETED;
+        $community  = ObjectMuseum::findOrFail($id);
+        $community->deleted = ObjectMuseum::DELETED;
 
         try{
             $community->save();

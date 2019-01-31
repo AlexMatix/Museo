@@ -27,4 +27,5 @@ Route::resource('community', 'Community\CommunityController', ['except' => ['cre
 
 
 /**************************RUTAS JOIN******************************************************/
-Route::get('getAllCollection/{idSet}','Collection\CollectionController@getAllCollection');
+Route::get('getAllCollection/{idSet}','Collection\CollectionController@getAllCollection'); //envia lo relacionado con la tabla de collection
+Route::get('getAllObjectMuseum/{idObject}', 'ObjectMuseum\ObjectController@getAllObjectMuseum'); //envia lo relaciona con la tabla de Objecto del museo

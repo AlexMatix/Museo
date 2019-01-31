@@ -5,6 +5,8 @@ namespace App\Http\Controllers\ObjectMuseum;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
 use App\ObjectMuseum;
+use Illuminate\Support\Facades\DB;
+
 
 class ObjectController extends ApiController
 {
@@ -85,5 +87,17 @@ class ObjectController extends ApiController
         }
 
         return $this->succesMessaje("Registro eliminado");
+    }
+
+    public function getAllObjectMuseum($idObject){
+
+        return $this->showList(
+            DB::table('object_museums')
+                ->join('collections','object_museums.collection_idCollection','=','collections.idCollection')
+                ->join('sub_collections', 'sub_collections.idSubCollection','=','object_museums.subCollection_idSubCollection')
+                ->join('inventory_catalogs', 'inventory_catalogs.idInventoryCatalogs','=','object_museums.location')
+                ->where('idObject','=',"$idObject")
+                ->get()
+        );
     }
 }

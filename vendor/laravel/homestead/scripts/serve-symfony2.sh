@@ -1,9 +1,14 @@
 #!/usr/bin/env bash
 
-mkdir /etc/nginx/ssl 2>/dev/null
-openssl genrsa -out "/etc/nginx/ssl/$1.key" 2048 2>/dev/null
-openssl req -new -key /etc/nginx/ssl/$1.key -out /etc/nginx/ssl/$1.csr -subj "/CN=$1/O=Vagrant/C=UK" 2>/dev/null
-openssl x509 -req -days 365 -in /etc/nginx/ssl/$1.csr -signkey /etc/nginx/ssl/$1.key -out /etc/nginx/ssl/$1.crt 2>/dev/null
+declare -A params=$6     # Create an associative array
+paramsTXT=""
+if [ -n "$6" ]; then
+    for element in "${!params[@]}"
+    do
+        paramsTXT="${paramsTXT}
+        fastcgi_param ${element} ${params[$element]};"
+    done
+fi
 
 block="server {
     listen ${3:-80};
@@ -32,9 +37,10 @@ block="server {
     # DEV
     location ~ ^/(app_dev|app_test|config)\.php(/|\$) {
         fastcgi_split_path_info ^(.+\.php)(/.+)\$;
-        fastcgi_pass unix:/var/run/php/php7.0-fpm.sock;
+        fastcgi_pass unix:/var/run/php/php$5-fpm.sock;
         include fastcgi_params;
         fastcgi_param SCRIPT_FILENAME \$document_root\$fastcgi_script_name;
+        $paramsTXT
 
         fastcgi_intercept_errors off;
         fastcgi_buffer_size 16k;
@@ -44,9 +50,10 @@ block="server {
     # PROD
     location ~ ^/app\.php(/|$) {
         fastcgi_split_path_info ^(.+\.php)(/.+)$;
-        fastcgi_pass unix:/var/run/php/php7.0-fpm.sock;
+        fastcgi_pass unix:/var/run/php/php$5-fpm.sock;
         include fastcgi_params;
         fastcgi_param SCRIPT_FILENAME \$document_root\$fastcgi_script_name;
+        $paramsTXT
 
         fastcgi_intercept_errors off;
         fastcgi_buffer_size 16k;
